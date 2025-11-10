@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle CO2 Emission Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-2xl w-full bg-gray-800 p-8 rounded-2xl shadow-2xl">
+    <h1 class="text-3xl font-bold text-center mb-6">Vehicle CO2 Emission Predictor</h1>
+    
+    <form id="prediction-form" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Engine Size (L)</label>
+          <input id="engine-size" type="number" step="0.1" class="mt-1 block w-full bg-gray-700 rounded-lg p-3" value="3.5" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Cylinders</label>
+          <input id="cylinders" type="number" step="1" class="mt-1 block w-full bg-gray-700 rounded-lg p-3" value="6" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Fuel Consumption (L/100km)</label>
+          <input id="fuel-consumption" type="number" step="0.1" class="mt-1 block w-full bg-gray-700 rounded-lg p-3" value="10.8" required>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Fuel Type</label>
+          <select id="fuel-type" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
+            <option value="X">X</option>
+            <option value="Z" selected>Z</option>
+            <option value="E">E</option>
+            <option value="D">D</option>
+            <option value="N">N</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Vehicle Class</label>
+          <select id="vehicle-class" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
+            <option value="Sport utility vehicle: Standard">Sport utility vehicle: Standard</option>
+            <option value="Sport utility vehicle: Small">Sport utility vehicle: Small</option>
+            <option value="Pickup truck: Standard">Pickup truck: Standard</option>
+            <option value="Mid-size">Mid-size</option>
+            <option value="Compact">Compact</option>
+            <option value="Subcompact">Subcompact</option>
+            <option value="Two-seater">Two-seater</option>
+            <option value="Full-size">Full-size</option>
+            <option value="Pickup truck: Small">Pickup truck: Small</option>
+            <option value="Minicompact">Minicompact</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Station wagon: Small">Station wagon: Small</option>
+            <option value="Station wagon: Mid-size">Station wagon: Mid-size</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300">Transmission</label>
+          <select id="transmission" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
+            <option value="AS8" selected>AS8</option>
+            <option value="A10">A10</option>
+            <option value="A8">A8</option>
+            <option value="AS10">AS10</option>
+            <option value="AV">AV</option>
+            <option value="AM7">AM7</option>
+            <option value="M6">M6</option>
+            <option value="AS6">AS6</option>
+            <option value="AS9">AS9</option>
+            <option value="AM6">AM6</option>
+            <option value="AV6">AV6</option>
+            <option value="AV1">AV1</option>
+            <option value="AV8">AV8</option>
+            <option value="AM8">AM8</option>
+            <option value="A9">A9</option>
+            <option value="AV10">AV10</option>
+            <option value="A6">A6</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-blue-600 rounded-lg text-lg font-semibold hover:bg-blue-700">Predict CO2 Emissions</button>
+    </form>
+
+    <div id="result-container" class="hidden mt-6 text-center bg-gray-900 p-6 rounded-lg">
+      <p class="text-lg text-gray-400">Predicted CO2 Emissions:</p>
+      <p id="result-text" class="text-4xl font-bold text-blue-400">--- g/km</p>
+    </div>
+  </div>
+
+  <script>
+  const form = document.getElementById("prediction-form");
+  const resultContainer = document.getElementById("result-container");
+  const resultText = document.getElementById("result-text");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    
+    const data = {
+      engine_size: parseFloat(document.getElementById("engine-size").value),
+      cylinders: parseInt(document.getElementById("cylinders").value),
+      fuel_consumption: parseFloat(document.getElementById("fuel-consumption").value),
+      fuel_type: document.getElementById("fuel-type").value,
+      vehicle_class: document.getElementById("vehicle-class").value,
+      transmission: document.getElementById("transmission").value
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        console.log(data)
+      });
+      const result = await response.json();
+      resultText.innerText = `${result.prediction} g/km`;
+      resultContainer.classList.remove("hidden");
+    } catch (err) {
+      console.error("Error:", err);
+      resultText.innerText = "Prediction failed.";
+      resultContainer.classList.remove("hidden");
+    }
+  });
+  </script>
+</body>
+</html>
