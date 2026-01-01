@@ -30,51 +30,83 @@
         <div>
           <label class="block text-sm font-medium text-gray-300">Fuel Type</label>
           <select id="fuel-type" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
-            <option value="X">X</option>
-            <option value="Z" selected>Z</option>
-            <option value="E">E</option>
-            <option value="D">D</option>
-            <option value="N">N</option>
+            <option value="D">D (Diesel)</option>
+            <option value="E">E (Ethanol/E85)</option>
+            <option value="N">N (Natural Gas)</option>
+            <option value="X">X (Regular Gasoline)</option>
+            <option value="Z" selected>Z (Premium Gasoline)</option>
           </select>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-300">Vehicle Class</label>
           <select id="vehicle-class" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
-            <option value="Sport utility vehicle: Standard">Sport utility vehicle: Standard</option>
-            <option value="Sport utility vehicle: Small">Sport utility vehicle: Small</option>
-            <option value="Pickup truck: Standard">Pickup truck: Standard</option>
-            <option value="Mid-size">Mid-size</option>
-            <option value="Compact">Compact</option>
-            <option value="Subcompact">Subcompact</option>
-            <option value="Two-seater">Two-seater</option>
-            <option value="Full-size">Full-size</option>
-            <option value="Pickup truck: Small">Pickup truck: Small</option>
-            <option value="Minicompact">Minicompact</option>
-            <option value="Minivan">Minivan</option>
-            <option value="Station wagon: Small">Station wagon: Small</option>
-            <option value="Station wagon: Mid-size">Station wagon: Mid-size</option>
+            <option value="COMPACT" selected>Compact</option>
+            <option value="Compact">Compact (old format)</option>
+            <option value="FULL-SIZE">Full-Size</option>
+            <option value="Full-size">Full-size (old format)</option>
+            <option value="MID-SIZE">Mid-Size</option>
+            <option value="Mid-size">Mid-size (old format)</option>
+            <option value="MINICOMPACT">Minicompact</option>
+            <option value="Minicompact">Minicompact (old format)</option>
+            <option value="MINIVAN">Minivan</option>
+            <option value="Minivan">Minivan (old format)</option>
+            <option value="PICKUP TRUCK - SMALL">Pickup Truck - Small</option>
+            <option value="Pickup truck: Small">Pickup truck: Small (old format)</option>
+            <option value="PICKUP TRUCK - STANDARD">Pickup Truck - Standard</option>
+            <option value="Pickup truck: Standard">Pickup truck: Standard (old format)</option>
+            <option value="SPECIAL PURPOSE VEHICLE">Special Purpose Vehicle</option>
+            <option value="Special purpose vehicle">Special purpose vehicle (old format)</option>
+            <option value="STATION WAGON - MID-SIZE">Station Wagon - Mid-Size</option>
+            <option value="Station wagon: Mid-size">Station wagon: Mid-size (old format)</option>
+            <option value="STATION WAGON - SMALL">Station Wagon - Small</option>
+            <option value="Station wagon: Small">Station wagon: Small (old format)</option>
+            <option value="SUBCOMPACT">Subcompact</option>
+            <option value="Subcompact">Subcompact (old format)</option>
+            <option value="SUV">SUV</option>
+            <option value="SUV - SMALL">SUV - Small</option>
+            <option value="SUV: Small">SUV: Small (old format)</option>
+            <option value="SUV - STANDARD">SUV - Standard</option>
+            <option value="SUV: Standard">SUV: Standard (old format)</option>
+            <option value="TWO-SEATER">Two-Seater</option>
+            <option value="Two-seater">Two-seater (old format)</option>
+            <option value="VAN - CARGO">Van - Cargo</option>
+            <option value="VAN - PASSENGER">Van - Passenger</option>
+            <option value="Van: Passenger">Van: Passenger (old format)</option>
           </select>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-300">Transmission</label>
           <select id="transmission" class="mt-1 block w-full bg-gray-700 rounded-lg p-3">
-            <option value="AS8" selected>AS8</option>
+            <option value="A3">A3</option>
+            <option value="A4">A4</option>
+            <option value="A5">A5</option>
+            <option value="A6">A6</option>
+            <option value="A7">A7</option>
+            <option value="A8" selected>A8</option>
+            <option value="A9">A9</option>
             <option value="A10">A10</option>
-            <option value="A8">A8</option>
+            <option value="AM5">AM5</option>
+            <option value="AM6">AM6</option>
+            <option value="AM7">AM7</option>
+            <option value="AM8">AM8</option>
+            <option value="AM9">AM9</option>
+            <option value="AS4">AS4</option>
+            <option value="AS5">AS5</option>
+            <option value="AS6">AS6</option>
+            <option value="AS7">AS7</option>
+            <option value="AS8">AS8</option>
+            <option value="AS9">AS9</option>
             <option value="AS10">AS10</option>
             <option value="AV">AV</option>
-            <option value="AM7">AM7</option>
-            <option value="M6">M6</option>
-            <option value="AS6">AS6</option>
-            <option value="AS9">AS9</option>
-            <option value="AM6">AM6</option>
-            <option value="AV6">AV6</option>
             <option value="AV1">AV1</option>
+            <option value="AV6">AV6</option>
+            <option value="AV7">AV7</option>
             <option value="AV8">AV8</option>
-            <option value="AM8">AM8</option>
-            <option value="A9">A9</option>
             <option value="AV10">AV10</option>
-            <option value="A6">A6</option>
+            <option value="M4">M4</option>
+            <option value="M5">M5</option>
+            <option value="M6">M6</option>
+            <option value="M7">M7</option>
           </select>
         </div>
       </div>
@@ -110,7 +142,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-        console.log(data)
+        //console.log(data)
       });
       const result = await response.json();
       resultText.innerText = `${result.prediction} g/km`;
