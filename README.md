@@ -1,8 +1,8 @@
-# 🌍 CO2 Emission Predictor
+# CO2 Emission Predictor
 
 A machine learning web application that predicts vehicle CO2 emissions based on engine specifications and fuel consumption patterns. Built with Flask and scikit-learn, trained on Canadian fuel consumption data (2000-2022).
 
-## 🎯 Features
+## Features
 
 - **Multiple ML Models**: Choose between Linear Regression, Random Forest, or Gradient Boosting
 - **RESTful API**: Simple JSON-based prediction endpoint
@@ -10,7 +10,7 @@ A machine learning web application that predicts vehicle CO2 emissions based on 
 - **Real-time Switching**: Hot-swap between models without restarting
 - **Production Ready**: Configured for deployment with Gunicorn and Procfile
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.7+
@@ -71,7 +71,7 @@ The API will be available at `http://localhost:5000`
 
 Returns details about the currently loaded model.
 
-## 🔧 Switching Models
+## Switching Models
 
 To use a different model, edit `app.py` line 13:
 
@@ -83,13 +83,13 @@ MODEL_CHOICE = "rf_model.joblib"      # Random Forest (Default)
 
 Flask will automatically reload with the new model.
 
-## 📈 Model Performance
+## Model Performance
 
 - **Linear Regression**: Fast, baseline accuracy
 - **Random Forest**: Best balance of speed and accuracy (Recommended)
 - **Gradient Boosting**: Highest accuracy, slower predictions
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 CO2_Emission_Predictor/
@@ -104,7 +104,7 @@ CO2_Emission_Predictor/
 └── co2_model.joblib               # Default model
 ```
 
-## 🌐 Deployment
+## Deployment
 
 The application includes a `Procfile` for easy deployment to platforms like Heroku:
 
@@ -112,7 +112,7 @@ The application includes a `Procfile` for easy deployment to platforms like Hero
 web: gunicorn app:app
 ```
 
-## 📊 Dataset
+## Dataset
 
 Trained on the Canadian Vehicle Fuel Consumption dataset (2000-2022) containing:
 - Engine size
@@ -123,7 +123,7 @@ Trained on the Canadian Vehicle Fuel Consumption dataset (2000-2022) containing:
 - Transmission type
 - CO2 emissions
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Backend**: Flask, Flask-CORS
 - **ML**: scikit-learn, pandas, numpy
@@ -131,7 +131,7 @@ Trained on the Canadian Vehicle Fuel Consumption dataset (2000-2022) containing:
 - **Model Persistence**: joblib
 
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork this project and submit pull requests for improvements!
 
