@@ -130,14 +130,8 @@ Trained on the Canadian Vehicle Fuel Consumption dataset (2000-2022) containing:
 - **Deployment**: Gunicorn
 - **Model Persistence**: joblib
 
-## 📝 License
-
-This project was created as part of a Machine Learning lab assignment.
 
 ## 🤝 Contributing
 
 Feel free to fork this project and submit pull requests for improvements!
 
-## 📧 Contact
-
-For questions or feedback, please open an issue in the repository.
